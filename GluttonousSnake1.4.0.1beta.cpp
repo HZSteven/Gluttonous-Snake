@@ -4,16 +4,23 @@
 #include<cstring>
 #include<conio.h>
 #include<iostream>
+#include<bits/stdc++.h> 
 #include<windows.h>
 
 using namespace std;
 
-string map[22];
-int n = 0, input, length, direction, newinp, flag, flag1;
-int speed = 60,delay = 9, con = 1, applex, appley, ti;
-bool wall = 1, ghost = 0;
+string Map[22];
+int n;
+int input, length, direction, newinp;
+int flag, flag1;
+int speed = 60;
+int delay = 9;
+int con   = 1;
+int applex, appley, ti;
+bool wall  = true;
+bool ghost = false;
 
-struct sna {
+struct Snake {
     int x;
     int y;
     int dir;
@@ -24,19 +31,19 @@ void output(void) {//GameMapOutput
     system("cls");
     if(ghost == 1 && ti % 5 != 0) {
         srand(time(NULL));
-        for(int i = 0; i < 20; i++){
-            map[rand() % 21][rand() % 21] = rand() % 127 + 1;
+        for(int i = 0; i < 20; ++i) {
+            Map[rand() % 21][rand() % 21] = rand() % 127 + 1;
         }
     }
     cout << "-GluttonousSnake-\nScore:" << (length - 3) * 5 << endl;
     for(int i = 0; i < 22; ++i) {
-    	out += map[i] + '\n';
+    	out += Map[i] + '\n';
 	}
     cout << out;
 }
 
 bool gameover(void) {//gameCondition
-    if(map[snake[0].x][snake[0].y] == '-' || map[snake[0].x][snake[0].y] == '|' || map[snake[0].x][snake[0].y] == '+' || snake[0].x == 0 || snake[0].x == 21 || snake[0].y == 0 || snake[0].y == 21) {
+    if(Map[snake[0].x][snake[0].y] == '-' || Map[snake[0].x][snake[0].y] == '|' || Map[snake[0].x][snake[0].y] == '+' || snake[0].x == 0 || snake[0].x == 21 || snake[0].y == 0 || snake[0].y == 21) {
         system("cls");
         cout << "Game over!\nScore:" << (length - 3) * 5 << endl;
         while(!_kbhit()) {
@@ -48,28 +55,28 @@ bool gameover(void) {//gameCondition
 } 
 
 void clemap(void) {//clearTheMap
-    map[ 0] = "######################";
-    map[ 1] = "#                    #";
-    map[ 2] = "#                    #";
-    map[ 3] = "#                    #";
-    map[ 4] = "#                    #";
-    map[ 5] = "#                    #";
-    map[ 6] = "#                    #";
-    map[ 7] = "#                    #";
-    map[ 8] = "#                    #";
-    map[ 9] = "#                    #";
-    map[10] = "#                    #";
-    map[11] = "#                    #";
-    map[12] = "#                    #";
-    map[13] = "#                    #";
-    map[14] = "#                    #";
-    map[15] = "#                    #";
-    map[16] = "#                    #";
-    map[17] = "#                    #";
-    map[18] = "#                    #";
-    map[19] = "#                    #";
-    map[20] = "#                    #";
-    map[21] = "######################";
+    Map[ 0] = "######################";
+    Map[ 1] = "#                    #";
+    Map[ 2] = "#                    #";
+    Map[ 3] = "#                    #";
+    Map[ 4] = "#                    #";
+    Map[ 5] = "#                    #";
+    Map[ 6] = "#                    #";
+    Map[ 7] = "#                    #";
+    Map[ 8] = "#                    #";
+    Map[ 9] = "#                    #";
+    Map[10] = "#                    #";
+    Map[11] = "#                    #";
+    Map[12] = "#                    #";
+    Map[13] = "#                    #";
+    Map[14] = "#                    #";
+    Map[15] = "#                    #";
+    Map[16] = "#                    #";
+    Map[17] = "#                    #";
+    Map[18] = "#                    #";
+    Map[19] = "#                    #";
+    Map[20] = "#                    #";
+    Map[21] = "######################";
 } 
 
 void GCS(void) {//gameConditionSet
@@ -96,11 +103,11 @@ void GCS(void) {//gameConditionSet
         applex = rand() % 20 + 1;
         appley = rand() % 20 + 1;
     }
-    map[applex][appley] = 'a';
-    map[snake[0].x][snake[0].y] = '@';
+    Map[applex][appley] = 'a';
+    Map[snake[0].x][snake[0].y] = '@';
     for(int i = 1; i < 484; ++i) {
     	if(snake[i].x != 0 && snake[i].y != 0) {
-    		map[snake[i].x][snake[i].y] = '-';
+    		Map[snake[i].x][snake[i].y] = '-';
 		}
 	}
     return;
@@ -131,7 +138,8 @@ int main(void) {
     
     while(1) {//gameLoop
         //keybdEvent
-        for(int i = 0; i < 110 - speed; i++) {
+        int END = 110 - speed;
+        for(int i = 0; i < END; ++i) {
             if(_kbhit()) {
                 newinp = _getch();
                 flag1 = 1;
@@ -220,7 +228,7 @@ int main(void) {
                         	speed += 5;
 						}
                         else if(con == 2 && delay < 15) {
-                        	delay++;
+                        	++delay;
 						}
                         else if(con == 3) {
                         	wall = !wall;
@@ -244,15 +252,17 @@ int main(void) {
         }
         
         //snakeUpd
-        for(int i = length - 1; i > 0; --i){
-            if(i == length - 1 && flag == 1){
-                snake[length].x   = snake[length - 1].x;
-                snake[length].y   = snake[length - 1].y;
-                snake[length].dir = snake[length - 1].dir;
+        int LenMinusOne = length - 1;
+        for(int i = LenMinusOne; i > 0; --i) {
+            if(i == LenMinusOne && flag == 1) {
+                snake[length].x   = snake[LenMinusOne].x;
+                snake[length].y   = snake[LenMinusOne].y;
+                snake[length].dir = snake[LenMinusOne].dir;
             }
-            snake[i].x   = snake[i - 1].x;
-            snake[i].y   = snake[i - 1].y;
-            snake[i].dir = snake[i - 1].dir;
+            int IMinusOne = i - 1;
+            snake[i].x   = snake[IMinusOne].x;
+            snake[i].y   = snake[IMinusOne].y;
+            snake[i].dir = snake[IMinusOne].dir;
         }
         if(flag == 1) {
         	++length;
@@ -278,7 +288,7 @@ int main(void) {
             	snake[0].y = 1;
 			}
             else if(direction == 2 && snake[0].x == 21) {
-            	snake[0].x=1;
+            	snake[0].x = 1;
 			}
             else if(direction == 3 && snake[0].y == 0) {
             	snake[0].y = 20;
@@ -295,7 +305,7 @@ int main(void) {
             applex = rand() % 20 + 1;
             appley = rand() % 20 + 1;
             flag = 1;
-            while(map[applex][appley] == '@' || map[applex][appley] == '|' || map[applex][appley] == '-' || map[applex][appley] == '+') {
+            while(Map[applex][appley] == '@' || Map[applex][appley] == '|' || Map[applex][appley] == '-' || Map[applex][appley] == '+') {
                 applex = rand() % 20 + 1;
                 appley = rand() % 20 + 1;
             }
@@ -306,26 +316,27 @@ int main(void) {
         
         //newGameMapUpd
         clemap();
-        map[applex][appley] = 'a';
-        map[snake[0].x][snake[0].y] = '@';
-        for(int i = 1; i < 484; i++) {
+        Map[applex][appley] = 'a';
+        Map[snake[0].x][snake[0].y] = '@';
+        for(int i = 1; i < 484; ++i) {
             if(snake[i].x != 0 && snake[i].y != 0) {
-                if(snake[i - 1].dir != snake[i].dir) {
+            	int IMinusOne = i - 1;
+                if(snake[IMinusOne].dir != snake[i].dir) {
                     if(snake[i + 1].dir != 0) {
-                    	map[snake[i].x][snake[i].y] = '+';
+                    	Map[snake[i].x][snake[i].y] = '+';
 					}
-                    else if(snake[i - 1].dir == 1 || snake[i-1].dir == 3) {
-                    	map[snake[i].x][snake[i].y] = '-';
+                    else if(snake[IMinusOne].dir == 1 || snake[IMinusOne].dir == 3) {
+                    	Map[snake[i].x][snake[i].y] = '-';
 					}
                     else {
-                    	map[snake[i].x][snake[i].y] = '|';
+                    	Map[snake[i].x][snake[i].y] = '|';
 					}
                 }
-                else if(snake[i - 1].dir == 1 || snake[i - 1].dir == 3){
-                	map[snake[i].x][snake[i].y] = '-';
+                else if(snake[IMinusOne].dir == 1 || snake[IMinusOne].dir == 3){
+                	Map[snake[i].x][snake[i].y] = '-';
 				}
                 else {
-                	map[snake[i].x][snake[i].y] = '|';
+                	Map[snake[i].x][snake[i].y] = '|';
 				}
             }
         }
