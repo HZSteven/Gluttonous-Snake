@@ -308,7 +308,7 @@ int main(void) {
         clemap();
         map[applex][appley] = 'a';
         map[snake[0].x][snake[0].y] = '@';
-        for(int i = 1; i < 484; ++) {
+        for(int i = 1; i < 484; i++) {
             if(snake[i].x != 0 && snake[i].y != 0) {
                 if(snake[i - 1].dir != snake[i].dir) {
                     if(snake[i + 1].dir != 0) {
@@ -340,4 +340,3 @@ int main(void) {
     }
     return 0;
 }
-
