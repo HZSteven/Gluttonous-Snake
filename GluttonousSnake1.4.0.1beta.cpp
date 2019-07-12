@@ -119,7 +119,7 @@ int main(void) {
 	
     //startPage
     system("cls");
-    string st = "-GluttonousSnake-\nBy KM_YoaMoa & HZSteven\nbeta1.4 Upd:2019/07/09\n-Press space to start the game-";
+    string st = "-GluttonousSnake-\nBy KM_YoaMoa & HZSteven\nbeta1.4.0.1 Upd:2019/07/12\n-Press space to start the game-";
     for(int i = 0; i < st.length(); ++i){
         cout << st[i];
         Sleep(50);
