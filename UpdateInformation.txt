@@ -15,5 +15,5 @@
 2019/07/09 beta_1.4 Amand code
 2019/07/11 beta_1.4.0.1 Change code style
 2019/07/12 beta_1.5.0.0 Function set
-Coder: Program404 & KM_YoaMoa
+Author:Program404 & KM_YoaMoa
 Thanks for all of help and suggestions from KM_YoaMoa
