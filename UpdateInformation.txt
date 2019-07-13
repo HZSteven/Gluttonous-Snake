@@ -1,0 +1,19 @@
+2018/11/20 V1.0.0 Orginal edition
+2018/11/20 V1.0.1 Debug
+2018/11/22 V1.1.0 Add game start page
+2018/11/22 V1.2.0_test Add level page & pause page
+2018/11/23 V1.3.0 Optimize
+2018/11/23 V1.3.1 Optimize
+2018/11/23 V1.3.2 Optimize & amend level
+2018/12/09 V2.0.0 Add login page & control page(Base on GluttontousSnake_LevelContraler V1.2.0)
+2018/12/09 V2.1.0 Optimize
+2018/12/09 V2.1.1 Debug
+2019/07/03 beta_1.0 Change code style & amend snake body & delete login page
+2019/07/03 beta_1.1 Debug
+2019/07/05 beta_1.2 Debug
+2019/07/06 beta_1.3 Optimize
+2019/07/09 beta_1.4 Amand code
+2019/07/11 beta_1.4.0.1 Change code style
+2019/07/12 beta_1.5.0.0 Function set
+Coder: Program404 & KM_YoaMoa
+Thanks for all of help and suggestions from KM_YoaMoa
