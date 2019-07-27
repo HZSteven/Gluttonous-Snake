@@ -64,7 +64,7 @@ void GCS(void) {//gameConditionSet
 	direction = 1;
 	length = 3;
     clemap();
-    //clesna();
+    clesna();
     ti = 0;
     snake[0].x   = 1;
     snake[1].x   = 1;
