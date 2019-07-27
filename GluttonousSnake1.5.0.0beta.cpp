@@ -51,7 +51,7 @@ void clemap(void) {//clearTheMap
     Map[21] = "######################";
 } 
 
-void clesna(void) {
+void clesna(void) { // clear the snake
 	for(int i = 1; i <= 483; ++i) {
 		snake[i].x = snake[i].y = 0;
 	}
@@ -64,7 +64,7 @@ void GCS(void) {//gameConditionSet
 	direction = 1;
 	length = 3;
     clemap();
-    clesna();
+    //clesna();
     ti = 0;
     snake[0].x   = 1;
     snake[1].x   = 1;
@@ -113,12 +113,12 @@ int gameover(void) { // gameCondition
     if(Map[snake[0].x][snake[0].y] == '-' || Map[snake[0].x][snake[0].y] == '|' || Map[snake[0].x][snake[0].y] == '+' || snake[0].x == 0 || snake[0].x == 21 || snake[0].y == 0 || snake[0].y == 21) {
         system("cls");
         cout << "Game over!\nScore:" << (length - 3) * 5 << endl;
-        cout << "Press space to keep playing or others to exit the game \n";
+        cout << "Press \'e\' to exit or others to keep playing the game \n";
 		while(!_kbhit()) {
         	Sleep(10);
 		}
 		char operation = _getch();
-		if(operation == ' ') {
+		if(operation != 'e') {
 			return 2;
 		}
         return 1;
