@@ -51,6 +51,12 @@ void clemap(void) {//clearTheMap
     Map[21] = "######################";
 } 
 
+void clesna(void) {
+	for(int i = 1; i <= 483; ++i) {
+		snake[i].x = snake[i].y = 0;
+	}
+}
+
 void GCS(void) {//gameConditionSet
 	flag1 = false;
 	system("color 0F");
@@ -58,6 +64,7 @@ void GCS(void) {//gameConditionSet
 	direction = 1;
 	length = 3;
     clemap();
+    clesna();
     ti = 0;
     snake[0].x   = 1;
     snake[1].x   = 1;
