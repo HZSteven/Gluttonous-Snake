@@ -149,7 +149,7 @@ int judge() { // 0 for exit, 1 for restart, 2 for continue
 void startGame() {
 	//startPage
     system("cls");
-    string st = "-GluttonousSnake-\nBy KM_YoaMoa & HZSteven\nbeta1.5.0.0 Upd:2019/07/12\n-Press space to start the game-";
+    string st = "-GluttonousSnake-\nBy KM_YoaMoa & HZSteven\nbeta1.6.0.0 Upd:2019/07/30\n-Press space to start the game-";
     for(int i = 0; i < st.length(); ++i){
         cout << st[i];
         Sleep(50);
